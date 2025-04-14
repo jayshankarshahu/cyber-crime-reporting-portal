@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Crime Reporting</title>
+  <link rel="stylesheet" href="/templates/css/style.css">
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+  <!-- Navbar -->
+  {% include "navbar.html" %}
+  {% if isLoggedIn %}
+  {% include "chatbox.html" %}
+  {% endif %}
+
+  <!-- Hero Section -->
+  <section class="relative h-screen bg-cover bg-center">
+    <div class="absolute inset-0 bg-gray-900 bg-opacity-60 bg-cover brightness-[50%]"
+      style="background-image: url('/templates/images/hacker-langing-page.jpg');"></div>
+    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
+      <img src="/templates/images/logo.jpeg" alt="Logo" class="mb-6 w-32 h-32 rounded-full">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6">Report Cyber Crimes Safely</h1>
+      <p class="text-lg md:text-xl mb-8">Your safety is our priority. Join us in the fight against cybercrime.</p>
+      <a href="/login" class="px-6 py-3 bg-gray-700 hover:bg-gray-800 rounded-lg text-lg font-semibold">Get Started</a>
+    </div>
+  </section>
+
+  <section class="bg-blue mx-auto text-white-900 my-10 p-12 rounded-lg shadow-lg max-w-4xl text-center flex flex-col items-center">
+    <h2 class="text-3xl font-bold mb-6">About Cyber Crime</h2>
+    <p class="text-lg leading-relaxed">
+      The internet in India is growing rapidly. It has given rise to new opportunities in every field we can think of,
+      be it entertainment, business, sports, or education.
+      There are two sides to a coin. The internet also has its own disadvantages, such as cyber crime—illegal activities
+      committed on the internet.
+      Cyber crime is an activity done using computers and the internet. We can say that it involves unlawful acts where
+      the computer is either a tool or a target, or both.
+    </p>
+  </section>
+
+
+  <!-- Cyber Crimes Section -->
+  <section id="cyber-crimes" class="py-12">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Types of Cyber Crimes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-10">
+        <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/templates/images/corporate-fraud.jpeg" alt="Corporate Fraud" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Corporate Fraud</h3>
+          </div>
+        </a>
+        <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/templates/images/financial-fraud.jpeg" alt="Financial Fraud" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Financial Fraud</h3>
+          </div>
+        </a>
+        <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/templates/images/women-fraud.jpeg" alt="Women & Children Crimes" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold"> Women & Child Fraud</h3>
+          </div>
+        </a>
+        <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/templates/images/finance-fraud.jpeg" alt="Identity Theft" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Social Media Fraud</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily News Section -->
+  <section id="daily-news" class="py-12">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Latest Daily News</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-10">
+        {% for news in dailyNews %}
+        <div class="bg-white rounded-lg shadow-md p-4 border border-gray-300">
+          <h3 class="text-xl font-semibold mb-2">{{ news.title }}</h3>
+          <p class="text-gray-600">{{ news.body[:100] }}...</p>
+          <a href="/daily-news/{{ news.id }}" class="text-blue-500 font-semibold">Read More</a>
+        </div>
+        {% else %}
+        <p class="text-center text-gray-600 col-span-3">No news available.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="cyber-crimes" class="py-12">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8"> Learning Corner</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-10">
+        <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/templates/images/6.png" alt="Cyber Safety Tips" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold"> <b>Cyber Safety Tips :</b>
+              <br>To stay safe in the online world, it is important to follow important cyber safety practices which may
+              help in protecting ourselves and our families from imminent threats that may harm our data and devices.
+            </h3>
+          </div>
+        </a>
+        <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/templates/images/7.png" alt="Cyber Awareness" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold"><b> Cyber Awareness :</b>
+              <br>Cyber awareness is an ongoing process of educating employees and citizens about the threats that lurk
+              in cyberspace and how to act responsibly.
+            </h3>
+          </div>
+        </a>
+
+        <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/templates/images/4.png" alt="Cyber pledge" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold"><b> Cyber pledge :</b>
+              <br>Come, let us all take the cyber security pledge and commit ourselves to build safe online environment.
+            </h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {% include "footer.html" %}
+</body>
+
+</html>

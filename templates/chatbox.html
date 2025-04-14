@@ -1,0 +1,48 @@
+<!-- Chat Button -->
+<button id="chat-toggle"
+    class="z-999 fixed bottom-5 right-5 bg-gray-700 text-white px-4 py-2 rounded-full shadow-md hover:bg-gray-800">
+    💬 Chat
+</button>
+
+<!-- Chat Box -->
+<div id="chatbox" class="z-999 fixed bottom-16 right-5 w-80 bg-white border border-gray-300 rounded-lg shadow-lg hidden">
+    <!-- Chat Header -->
+    <div class="bg-gray-800 text-white p-3 flex justify-between items-center rounded-t-lg">
+        <span class="font-semibold">Support</span>
+        <button id="close-chat" class="text-gray-300 hover:text-white">✖</button>
+    </div>
+
+    <!-- Chat Messages -->
+    <div id="chat-messages" class="p-3 h-60 overflow-y-auto space-y-2"></div>
+
+    <!-- Chat Input -->
+    <div class="flex border-t border-gray-300">
+        <input id="chat-input" type="text" placeholder="Type a message..." class="w-full p-2 focus:outline-none">
+        <button id="send-btn" class="bg-gray-700 text-white px-3 py-2 hover:bg-gray-800">Send</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById("chat-toggle").addEventListener("click", function () {
+        document.getElementById("chatbox").classList.toggle("hidden");
+    });
+
+    document.getElementById("close-chat").addEventListener("click", function () {
+        document.getElementById("chatbox").classList.add("hidden");
+    });
+
+    document.getElementById("send-btn").addEventListener("click", function () {
+        let input = document.getElementById("chat-input");
+        let message = input.value.trim();
+
+        if (message) {
+            let chatMessages = document.getElementById("chat-messages");
+            let msgDiv = document.createElement("div");
+            msgDiv.className = "bg-gray-200 p-2 rounded-lg";
+            msgDiv.textContent = message;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            input.value = "";
+        }
+    });
+</script>

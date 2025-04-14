@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Complaint</title>
+    <link rel="stylesheet" href="/templates/css/style.css">
+</head>
+<body class="bg-gray-100">
+
+    {% include 'navbar.html' %}
+
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6">Daily News</h1>
+        
+        {% if isAdmin %}
+        <div class="mb-4">
+            <a href="/daily-news/create" class="bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700">
+                + Create News
+            </a>
+        </div>
+        {% endif %}
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for news in newsList %}
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden p-4 border border-gray-200">
+                <h2 class="text-xl font-semibold mb-2">{{ news.title }}</h2>
+                <p class="text-gray-700 text-sm mb-4">{{ news.body[:150] }}...</p>
+                <p class="text-gray-500 text-xs">Published on {{ news.created_at|date("F j, Y, g:i a") }}</p>
+                <a href="/daily-news/{{ news.id }}" class="text-blue-500 hover:underline mt-2 block">Read More</a>
+            </div>
+            {% else %}
+            <p class="text-gray-600">No news available.</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    {% include 'footer.html' %}
+    
+</body>
+</html>
