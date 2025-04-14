@@ -25,7 +25,7 @@ cd cyber-crime-reporting-portal
 composer update
 ```
 
-### Create a .env file
+Create a .env file
 
 ```bash
 DB_HOST=localhost
@@ -34,7 +34,7 @@ DB_USER=your_database_user
 DB_PASS=your_database_password
 ```
 
-### Start the PHP built-in server
+Start the PHP built-in server
 
 ```bash
 php -S localhost:3000
