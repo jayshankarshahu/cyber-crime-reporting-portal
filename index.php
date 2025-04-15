@@ -8,10 +8,12 @@
         session_start();
     }
 
+    require_once __DIR__ . '/vendor/autoload.php';
+
     define('PATH', '/' . trim(strtok($_SERVER["REQUEST_URI"], '?'), '/'));
     define('PATH_ARRAY', [...array_filter(explode('/', PATH))]);
 
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 
     $host = $_ENV['DB_HOST'];
@@ -28,7 +30,6 @@
     }
 
 
-    require_once __DIR__ . '/vendor/autoload.php';
 
     try {
         $pdo = new PDO("mysql:host=$host;dbname=$db_name;charset=utf8",$user, $pass);
